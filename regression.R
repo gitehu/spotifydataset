@@ -39,3 +39,23 @@ tidy(stan_model)
 library(broom.mixed)
 tidy(stan_model)
 
+
+#https://ademos.people.uic.edu/Chapter10.html
+
+ggplot(data = songs, aes(x = song_age, y = popularity))+
+  geom_point(aes(color=popularity))+
+  geom_smooth(color='black')+
+  theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+  
+  xlab("years since the song was written")+ylab("popularity rate")
+
+# Show the contour only
+ggplot(data = songs, aes(x = song_age, y = popularity)) +
+  geom_density_2d()+theme_bw()
+
+# Area + contour
+ggplot(data = songs, aes(x = song_age, y = popularity)) +
+  stat_density_2d(aes(fill = ..level..), geom = "polygon", colour="white")+
+  theme_bw()+  
+  xlab("years since the song was written")+ylab("popularity rate")
+
